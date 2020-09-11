@@ -1,25 +1,18 @@
 import time
 from selenium.webdriver.common.action_chains import ActionChains
-# webdriver это и есть набор команд для управления браузером
 from selenium import webdriver
 
-# инициализируем драйвер браузера. После этой команды вы должны увидеть новое открытое окно браузера
 driver = webdriver.Chrome()
-# команда time.sleep устанавливает паузу в 5 секунд, чтобы мы успели увидеть, что происходит в браузере
 time.sleep(5)
 
-# Метод get сообщает браузеру, что нужно открыть сайт по указанной ссылке
 driver.get("http://127.0.0.1:8000/admin")
 time.sleep(5)
 
-# Метод find_element_by_css_selector позволяет найти нужный элемент на сайте, указав путь к нему. Способы поиска элементов мы обсудим позже
-# Ищем поле для ввода текста
 login = driver.find_element_by_id("id_username")
 login.send_keys("vasil")
 password = driver.find_element_by_id("id_password")
 password.send_keys("KH123456")
 
-# Найдем кнопку, которая отправляет введенное решение
 submit_button = driver.find_element_by_xpath("//*[@type='submit']").click()
 time.sleep(2)
 admin_page = driver.find_element_by_xpath("//*[text() = 'Posts']").click()
